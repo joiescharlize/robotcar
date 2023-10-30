@@ -1,0 +1,28 @@
+/*  PRIZM Controller example program
+ *  Spin DC motor channel 1 for 5 seconds, then coast to a stop.
+ *  After stopping, wait for 2 seconds, spin in opposite direction.
+ *  Continue to repeat until RED reset button is pressed.
+ *  author PWU on 08/05/2016
+*/
+
+  #include <PRIZM.h>    // include the PRIZM library in the sketch
+  PRIZM prizm;          // instantiate a PRIZM object “prizm” so we can use its functions
+
+void setup() {        
+
+  prizm.PrizmBegin();   // Initialize the PRIZM controller
+  prizm.setMotorInvert (1,1);
+   prizm.setMotorInvert (2,1);
+}
+
+void loop() {     // repeat in a loop
+
+  prizm.setMotorPowers(50,50);    // spin Motor 1 CW at 25% power
+  delay(5000);                  // wait while the motor runs for 5 seconds
+prizm.PrizmEnd();
+}
+
+
+
+
+
